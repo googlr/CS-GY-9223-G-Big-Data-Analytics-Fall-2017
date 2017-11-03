@@ -1,8 +1,22 @@
-from __future__ import print_function
-
-import sys
 from operator import add
 from pyspark import SparkContext
+
+# 
+# I referred some code from http://www.mccarroll.net/blog/pyspark2/
+# in this homework
+#
+
+#@staticmethod
+#def get_bigram(s):
+ #       s_bigrams = []
+  #      words = s.split(" ")
+   #     for i in range(0, len(words)-1):
+    #        s_bigrams.append( ((s[i],s[i+1]),1))
+#
+ #       return sc.parallelize(s_bigrams)
+def split(line):
+    words = line.split(" ")
+    return [(words[i], words[i+1]) for i in range(len(words)-1)]
 
 
 if __name__ == "__main__":
@@ -16,16 +30,14 @@ if __name__ == "__main__":
                   .flatMap(lambda x: x.split("."))
 
     #Your code goes here
-    def get_bigram(s):
-        bigrams = []
-        words = s.split(" ")
-        for i in range(0, len(words)-1):
-            bigrams.append( ((s[i],s[i+1]),1))
+    bigrams = sentences.map(lambda x:x.split()) \
+        .flatMap(lambda x: [((x[i],x[i+1]),1) for i in range(0,len(x)-1)])
 
-        return sc.parallelize(bigrams)
+    freq_bigrams = bigrams.reduceByKey(lambda x,y:x+y) \
+        .map(lambda x:(x[0],x[1])) \
+        .sortBy(lambda x: x[1],False)\
+        .take(100)
 
-    top100bigram = sentences.map(lambda s: get_bigram(s)).reduceByKey(lambda x,y: x+y).sortBy(lambda x: x[1], False).take(100)
-    top100bigram.saveAsTextFile("top100bigram.out")
-              
+    sc.parallelize(freq_bigrams).saveAsTextFile("bigram_count.out")
 
     sc.stop()
