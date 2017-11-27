@@ -8,4 +8,7 @@ The task of this lab is trying bigram on Spark with AWS EMR or NYU DUMBO.
 
 # Command lines
 * Download the result from EMR:
-  `scp -i ./googlrAmazonKeyPairs.pem hadoop@ec2-18-216-58-28.us-east-2.compute.amazonaws.com:/home/hadoop/b.out .` Refer to [How to download a file from EC2 instance to Local Computer](https://stackoverflow.com/questions/21861385/how-to-download-a-file-from-ec2-instance-to-local-computer)
+
+  `scp -i ./googlrAmazonKeyPairs.pem hadoop@ec2-18-216-58-28.us-east-2.compute.amazonaws.com:/home/hadoop/b.out .`
+  
+  Refer to [How to download a file from EC2 instance to Local Computer](https://stackoverflow.com/questions/21861385/how-to-download-a-file-from-ec2-instance-to-local-computer)
