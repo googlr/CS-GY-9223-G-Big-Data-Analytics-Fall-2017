@@ -4,3 +4,6 @@
 - [Set up the SSH tunnel to HPC](https://wikis.nyu.edu/pages/viewpage.action?pageId=84607390)
 
   After setting up, use `ssh hpctunnel` and `ssh dumbo` to access the HPC DUMBO clusters.
+  
+- Fetch files from HPC:
+  `scp xg626@dumbo.hpc.nyu.edu:/home/xg626/xxx.csv ./GoogleDrive/`
