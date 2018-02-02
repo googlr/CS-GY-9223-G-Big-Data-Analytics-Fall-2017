@@ -85,3 +85,4 @@
   Bytes per second: sent 543262.2, received 161.4
   debug1: Exit status 0
   ```
+  See [Moving files between your workstation and HDFS](https://wikis.nyu.edu/display/NYUHPC/Clusters+-+Dumbo#Clusters-Dumbo-StorageonDumbo).
