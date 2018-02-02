@@ -7,3 +7,6 @@
   
 - Fetch files from HPC:
   `scp xg626@dumbo.hpc.nyu.edu:/home/xg626/xxx.csv ./GoogleDrive/`
+  
+- Interact with HDFS
+  * Copy the input file to HDFS: `hadoop fs -copyFromLocal sherlock.txt`
